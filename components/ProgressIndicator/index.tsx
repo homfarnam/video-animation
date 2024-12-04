@@ -16,7 +16,12 @@ export const ProgressIndicator: React.FC<ProgressIndicatorProps> = ({
   return (
     <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2">
       {/* Base line */}
-      <div className="w-full h-[0.5px] bg-white/20" />
+      <motion.div
+        className="w-full h-[0.5px] bg-white/20"
+        initial={{ width: "0%" }}
+        animate={{ width: "100%" }}
+        transition={{ duration: 1, ease: "linear" }}
+      />
 
       {/* Progress lines */}
       <div className="absolute inset-0">
@@ -27,8 +32,16 @@ export const ProgressIndicator: React.FC<ProgressIndicatorProps> = ({
               key="background"
               className="absolute top-0 left-0 h-[1px] bg-white origin-left"
               initial={{ width: "0%" }}
-              animate={{ width: `${backgroundProgress * 100}%` }}
-              exit={{ opacity: 0 }}
+              animate={{
+                width: `${backgroundProgress * 100}%`,
+              }}
+              exit={{
+                opacity: 0,
+                x: "+150%",
+                transition: {
+                  duration: 0.8,
+                },
+              }}
               transition={{
                 duration: 1,
                 ease: ANIMATION_CONFIG.progressTicker.ease,
