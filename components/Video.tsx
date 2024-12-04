@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { useCallback, useRef, useState } from "react";
 import { ProgressIndicator } from "./ProgressIndicator";
 import { ANIMATION_CONFIG } from "./ProgressIndicator/config";
+import { HeroText } from "./HeroText.tsx";
 
 const VideoBackground = () => {
   const backgroundVideoRef = useRef<HTMLVideoElement | null>(null);
@@ -98,7 +99,7 @@ const VideoBackground = () => {
   });
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
+    <div className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden">
       {/* Background Video */}
       <video
         ref={backgroundVideoRef}
@@ -107,6 +108,8 @@ const VideoBackground = () => {
         playsInline
         src="/pharma.mp4"
       />
+
+      <HeroText />
 
       {/* Foreground Video */}
       <AnimatePresence>
