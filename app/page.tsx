@@ -1,8 +1,8 @@
-import VideoBackground from "@/components/Video";
+import VideoBackground from "@/components/VideoBackground";
 
 export default function Home() {
   return (
-    <main className="">
+    <main>
       <VideoBackground />
     </main>
   );
