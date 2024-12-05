@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bronkhorst Video Landing Page
+
+A modern, animated landing page featuring synchronized video transitions and dynamic text animations. This project showcases a sophisticated video background system with split-screen effects and smooth animations.
+
+## Features
+
+- **Dynamic Video Transitions**
+  - Seamless background to foreground video transitions
+  - Split-screen video effect with synchronized playback
+  - Smooth slide animations for video transitions
+
+- **Interactive UI Elements**
+  - Animated progress indicators
+  - Dynamic text reveals
+  - Responsive navigation controls
+  - Elegant hover effects
+
+- **Performance Optimized**
+  - Efficient video playback management
+  - Optimized animation performance
+  - Synchronized video states
+
+## Technology Stack
+
+- **Core Technologies**
+  - React 18
+  - TypeScript
+  - Vite
+  - Tailwind CSS
+
+- **Animation Libraries**
+  - Framer Motion - For smooth animations and transitions
+  - Lucide React - For high-quality icons
+
+## Key Components
+
+- **VideoBackground**: Main container component managing video states and transitions
+- **BackgroundVideo**: Handles the initial full-screen video
+- **ForegroundVideo**: Manages the split-screen video effect
+- **HeroText**: Animated text overlays with sequential reveals
+- **NavigationControls**: Interactive navigation elements
+- **ProgressIndicator**: Visual feedback for video progress
+
+## Custom Hooks
+
+- **useVideoMetadata**: Handles video metadata loading
+- **useVideoPlayback**: Manages video playback states
+- **useVideoSync**: Ensures synchronized playback of split videos
+- **useVideoTransition**: Manages smooth transitions between video states
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   or
+   yarn install
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   or
+   yarn dev
+   ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Development
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Code Style**: The project uses ESLint and TypeScript for code quality
+- **Styling**: Tailwind CSS for utility-first styling
+- **State Management**: React hooks for local state management
+- **Animation**: Framer Motion for declarative animations
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Best Practices
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Component composition for maintainability
+- Custom hooks for reusable logic
+- TypeScript for type safety
+- Performance optimization for video playback
+- Modular architecture for scalability
