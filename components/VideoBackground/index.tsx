@@ -1,12 +1,12 @@
 "use client";
 
-import { useVideoMetadata } from "@/hooks/useVideoMetadata";
 import { useVideoPlayback } from "@/hooks/useVideoPlayback";
 import { AnimatePresence, motion } from "motion/react";
 import { useCallback, useRef, useState } from "react";
-import { ProgressIndicator } from "./ProgressIndicator";
-import { ANIMATION_CONFIG } from "./ProgressIndicator/config";
-import { HeroText } from "./HeroText.tsx";
+import { ProgressIndicator } from "../ProgressIndicator";
+import { ANIMATION_CONFIG } from "../ProgressIndicator/config";
+import { HeroText } from "../HeroText.tsx";
+import { useVideoSync } from "@/hooks/useVideoSync";
 
 const VideoBackground = () => {
   const backgroundVideoRef = useRef<HTMLVideoElement | null>(null);
@@ -15,9 +15,6 @@ const VideoBackground = () => {
 
   const [showForeground, setShowForeground] = useState(false);
   const [isForegroundPlaying, setIsForegroundPlaying] = useState(false);
-
-  const backgroundMetadata = useVideoMetadata(backgroundVideoRef);
-  const foregroundMetadata = useVideoMetadata(foregroundTopRef);
 
   const [backgroundProgress, setBackgroundProgress] = useState(0);
   const [foregroundProgress, setForegroundProgress] = useState(0);
@@ -59,23 +56,7 @@ const VideoBackground = () => {
   }, []);
 
   // Synchronize video playback
-  const syncVideos = useCallback(
-    (event: React.SyntheticEvent<HTMLVideoElement>) => {
-      const targetVideo = event.currentTarget;
-      const isTop = targetVideo === foregroundTopRef.current;
-      const otherVideo = isTop
-        ? foregroundBottomRef.current
-        : foregroundTopRef.current;
-
-      if (
-        otherVideo &&
-        Math.abs(targetVideo.currentTime - otherVideo.currentTime) > 0.1
-      ) {
-        otherVideo.currentTime = targetVideo.currentTime;
-      }
-    },
-    []
-  );
+  const syncVideos = useVideoSync(foregroundTopRef, foregroundBottomRef);
 
   useVideoPlayback({
     videoRef: backgroundVideoRef,
@@ -88,14 +69,6 @@ const VideoBackground = () => {
     videoRef: foregroundTopRef,
     onTimeUpdate: handleForegroundTimeUpdate,
     autoPlay: false,
-  });
-
-  const backgroundDuration = backgroundMetadata?.duration || 0;
-  const foregroundDuration = foregroundMetadata?.duration || 0;
-
-  console.log({
-    backgroundDuration,
-    foregroundDuration,
   });
 
   return (
