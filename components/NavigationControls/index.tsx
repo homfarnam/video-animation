@@ -4,9 +4,6 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 export const NavigationControls = () => {
   return (
     <div className="z-50 flex flex-row justify-center gap-4">
-      {/* Navigation Line */}
-
-      {/* Navigation Buttons */}
       <motion.button
         className="w-14 h-14 flex items-center justify-center"
         initial={{ opacity: 0, x: +50 }}
