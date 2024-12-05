@@ -19,6 +19,7 @@ const Navlinks = [
 ];
 
 const MotionLink = motion(Link);
+const MotionImage = motion(Image);
 
 export const Header = () => {
   return (
@@ -45,26 +46,41 @@ export const Header = () => {
           ))}
         </ul>
 
-        <Image src="/images/Search.svg" alt="Search" width={24} height={24} />
-        <Image src="/images/Menu.svg" alt="Menu" width={24} height={24} />
+        <MotionImage
+          src="/images/Search.svg"
+          alt="Search"
+          width={24}
+          height={24}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.8 }}
+        />
+        <MotionImage
+          src="/images/Menu.svg"
+          alt="Menu"
+          width={24}
+          height={24}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 1 }}
+        />
       </nav>
 
       <div className="flex items-center gap-14 text-white">
-        <div className="flex items-center gap-3">
+        <motion.div
+          className="flex items-center gap-3"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 1 }}
+        >
           <Image
             src="/images/Language.svg"
             alt="Language"
             width={24}
             height={24}
           />
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1 }}
-          >
-            NL
-          </motion.span>
-        </div>
+          <span>NL</span>
+        </motion.div>
         <MotionLink
           href="#"
           initial={{ opacity: 0, y: 20 }}
