@@ -109,7 +109,7 @@ const VideoBackground = () => {
         src="/pharma.mp4"
       />
 
-      <HeroText />
+      <HeroText isSecondVideoStarted={isForegroundPlaying} />
 
       {/* Foreground Video */}
       <AnimatePresence>
